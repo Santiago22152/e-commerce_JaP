@@ -1,2 +1,2 @@
 # ecommerce-capacitador
-#Pagina publicada!
+# Pagina publicada!
