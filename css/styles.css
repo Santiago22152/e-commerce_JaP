@@ -8,7 +8,7 @@
 
 .jumbotron {
   height: 50vh;
-  padding: 5em inherit;
+  
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
@@ -139,3 +139,15 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.price-tag-amount {
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.856);
+  font-size:  1.4rem;
+  line-height: 70px;
+  font-family: Trebuchet MS;
+}
+.price-tag-symbol{
+  margin-right: .3em;
+}
+

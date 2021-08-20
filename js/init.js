@@ -40,6 +40,12 @@ var getJSONData = function(url){
     });
 }
 
+  if((window.location.href != (window.location.origin+ "/login.html")) && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
+{
+ window.location.href = "../login.html";
+}
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
