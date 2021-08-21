@@ -11,7 +11,7 @@ document.getElementById("trigger").addEventListener("click",function(){
           sessionStorage.setItem("password",password.value);
           alert("Bienvenido "+user.value);
   
-          window.location.href = "/e-commerce_JaP/index.html";
+          window.location.replace('index.html');
       }
       
   }});

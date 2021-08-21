@@ -40,9 +40,9 @@ var getJSONData = function(url){
     });
 }
 
-  if((sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
+  if((window.location.pathname != '/login.html') && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
 {
- window.location.href = "/e-commerce_JaP/login.html";
+ window.location.replace('login.html');
 }
 
 
