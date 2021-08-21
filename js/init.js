@@ -40,7 +40,7 @@ var getJSONData = function(url){
     });
 }
 
-  if((window.location.pathname != '/login.html') && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
+  if(( window.location.pathname.substring((window.location.pathname.lastIndexOf('/'))+1) != 'login.html') && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
 {
  window.location.replace('login.html');
 }
