@@ -1,6 +1,6 @@
 const USERID = "11833756231-vi15u0fik0la47jj7v26md047qlp70ql.apps.googleusercontent.com";
 
-let gautorizacion;
+let auth2;
 let usuarioG = {};
 document.addEventListener("DOMContentLoaded", function(e){
  
@@ -27,7 +27,7 @@ document.getElementById("trigger").addEventListener("click",function(){
 document.getElementById("clickGoogle").addEventListener("click",async () => {
 
     
-      await  gautorizacion.signIn();
+      await  auth2.signIn();
    
     
 });
@@ -37,19 +37,19 @@ function initClient() {
       'clientId': USERID,
       'scope': 'profile'
     }).then(function () {
-      gautorizacion = gapi.gautorizacion.getAuthInstance();
+      auth2 = gapi.auth2.getAuthInstance();
   
       // Listen for sign-in state changes.
-      gautorizacion.isSignedIn.listen(updateSigninStatus);
+      auth2.isSignedIn.listen(updateSigninStatus);
   
       // Handle initial sign-in state. (Determine if user is already signed in.)
-      var user = gautorizacion.currentUser.get();
+      var user = auth2.currentUser.get();
       setSigninStatus();
     });
   }
   
 function setSigninStatus() {
-    var user = gautorizacion.currentUser.get();
+    var user = auth2.currentUser.get();
     var isAuthorized = user.hasGrantedScopes('profile');
     if (isAuthorized) {
         window.location.replace('index.html');
@@ -64,7 +64,7 @@ function setSigninStatus() {
   };
 
   function revokeAccess() {
-    gautorizacion.disconnect();
+    auth2.disconnect();
   }
 
 
