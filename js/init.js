@@ -40,9 +40,9 @@ var getJSONData = function(url){
     });
 }
 
-  if((window.location.href != ("https://tai22152.github.io/e-commerce_JaP/login.html")) && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
+  if((sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
 {
- window.location.href = "https://tai22152.github.io/e-commerce_JaP/login.html";
+ window.location.href = "../login.html";
 }
 
 
