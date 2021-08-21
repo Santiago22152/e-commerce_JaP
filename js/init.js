@@ -42,7 +42,7 @@ var getJSONData = function(url){
 
   if((window.location.href != (window.location.origin+ "/login.html")) && (sessionStorage.getItem("user") == undefined || sessionStorage.getItem("password") == undefined))
 {
- window.location.href = window.location.origin+ "/login.html";
+ window.location.href = "login.html";
 }
 
 
