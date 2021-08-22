@@ -45,17 +45,17 @@ var getJSONData = function(url){
 {
     window.location.replace('login.html');
 }
+document.getElementById("logout").addEventListener("click",function(e){
+  sessionStorage.clear();
+  auth2.disconnect();
+  window.sessionStorage.removeItem('user');
+  window.location.reload();
 
+})
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  document.getElementById("logout").addEventListener("click",function(e){
-    sessionStorage.clear();
-    auth2.disconnect();
-    window.sessionStorage.removeItem('user');
-    window.location.reload();
   
-  })
 });
