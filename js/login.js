@@ -31,7 +31,7 @@ document.getElementById("clickGoogle").addEventListener("click",async () => {
    
     
 });
-  
+
 function initClient() {
     gapi.client.init({
       'clientId': USERID,

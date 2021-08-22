@@ -43,10 +43,15 @@ var getJSONData = function(url){
   if((( window.location.pathname.substring((window.location.pathname.lastIndexOf('/'))+1) != 'login.html') &&
      (sessionStorage.getItem("user") == undefined)  ))
 {
-  if(sessionStorage.getItem('user') == undefined){
-    window.location.replace('login.html');}
+    window.location.replace('login.html');
 }
+document.getElementById("logout").addEventListener("click",function(e){
+  sessionStorage.clear();
+  window.location.reload();
+  revokeAccess();
+  
 
+})
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
