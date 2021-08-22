@@ -65,6 +65,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         function revokeAccess() {
             usuarioG.disconnect();
         }
+        document.getElementById("logout").addEventListener("click",  function(e){
+            window.sessionStorage.removeItem('user');
+            usuarioG.disconnect();
+           sessionStorage.clear();
+           location.reload();
+          
+            
+          
+          })
   
 });
 
