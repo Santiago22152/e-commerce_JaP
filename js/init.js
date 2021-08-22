@@ -47,8 +47,9 @@ var getJSONData = function(url){
 }
 document.getElementById("logout").addEventListener("click", async function(e){
   window.sessionStorage.removeItem('user');
-  CookieManager.getInstance().removeAllCookie();
-  window.location.reload();
+  let linkfin = (window.location.pathname.substring(0, (window.location.pathname.lastIndexOf('/')))+ '/login.html');
+  window.location.href = 'https://appengine.google.com/_ah/logout?continue='+ linkfin;
+  
 
 })
 
