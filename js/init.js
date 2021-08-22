@@ -72,6 +72,22 @@ document.addEventListener("DOMContentLoaded", function(e){
       setSigninStatus();
     });
   }
+  function setSigninStatus() {
+    var user = auth2.currentUser.get();
+    var isAuthorized = user.hasGrantedScopes('profile');
+    if (isAuthorized) {
+        
+        usuarioG = user;
+        let profile = usuarioG.getBasicProfile();
+        window.sessionStorage.setItem('user', profile.getName());
+        window.sessionStorage.setItem('userID', profile.getId());
+        window.sessionStorage.setItem('email', profile.getEmail());
+        window.location.replace('index.html');
+    }
+  };
+  function updateSigninStatus() {
+    setSigninStatus();
+  };
   function signOut(){
     gapi.load('client:auth2', initClient);
     var auth2 = gapi.auth2.getAuthInstance();
