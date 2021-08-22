@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", function(e){
               
               usuarioG = user;
               let profile = usuarioG.getBasicProfile();
-              window.sessionStorage.setItem('user', profile.getGivenName());
+              window.sessionStorage.setItem('user', profile.getName());
+              window.sessionStorage.setItem('userID', profile.getId());
+              window.sessionStorage.setItem('email', profile.getEmail());
               window.location.replace('index.html');
           }
         };
@@ -65,16 +67,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         function revokeAccess() {
             usuarioG.disconnect();
         }
-        document.getElementById("logout").addEventListener("click",  function(e){
-            window.sessionStorage.removeItem('user');
-            usuarioG.disconnect();
-           sessionStorage.clear();
-           location.reload();
-          
-            
-          
-          })
-  
+        function signOut(){
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out');
+          });
+          window.sessionStorage.clear();
+          location.reload();
+        }
+
+        
 });
 
 
