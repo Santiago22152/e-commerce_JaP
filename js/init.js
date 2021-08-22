@@ -45,15 +45,7 @@ var getJSONData = function(url){
 {
     window.location.replace('login.html');
 }
-document.getElementById("logout").addEventListener("click",  function(e){
-  window.sessionStorage.removeItem('user');
-  usuarioG.disconnect();
- sessionStorage.clear();
- location.reload();
 
-  
-
-})
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
