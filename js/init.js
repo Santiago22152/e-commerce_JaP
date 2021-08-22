@@ -45,8 +45,9 @@ var getJSONData = function(url){
 {
     window.location.replace('login.html');
 }
-document.getElementById("logout").addEventListener("click",function(e){
+document.getElementById("logout").addEventListener("click", async function(e){
   window.sessionStorage.removeItem('user');
+  CookieManager.getInstance().removeAllCookie();
   window.location.reload();
 
 })
