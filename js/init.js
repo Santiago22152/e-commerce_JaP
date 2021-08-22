@@ -47,8 +47,7 @@ var getJSONData = function(url){
 }
 document.getElementById("logout").addEventListener("click", async function(e){
   window.sessionStorage.removeItem('user');
-  let linkfin = (window.location.pathname.substring(0, (window.location.pathname.lastIndexOf('/')))+ '/login.html');
-  window.location.href = 'https://appengine.google.com/_ah/logout?continue='+ linkfin;
+  window.location.href = 'https://appengine.google.com/_ah/logout?continue=https://tai22152.github.io/e-commerce_JaP/login.html';
   
 
 })
