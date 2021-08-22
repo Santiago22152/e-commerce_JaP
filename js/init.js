@@ -53,9 +53,9 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("logout").addEventListener("click",function(e){
     sessionStorage.clear();
+    auth2.disconnect();
+    window.sessionStorage.removeItem('user');
     window.location.reload();
-    revokeAccess();
-    
   
   })
 });

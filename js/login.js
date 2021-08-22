@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         function revokeAccess() {
             if (auth2) {
                 auth2.disconnect();
-                window.sessionStorage.removeItem('name');
+                window.sessionStorage.removeItem('user');
             }
             window.sessionStorage.removeItem('login');
             await Toast.fire({
