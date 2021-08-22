@@ -6,9 +6,7 @@ const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
-const USERID = "11833756231-vi15u0fik0la47jj7v26md047qlp70ql.apps.googleusercontent.com";
-let auth2;
-let usuarioG = {};
+
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -47,23 +45,7 @@ var getJSONData = function(url){
 {
     window.location.replace('login.html');
 }
-function initClient() {
-  gapi.client.init({
-    'clientId': USERID,
-    'scope': 'profile'
-  }).then(function () {
-    auth2 = gapi.auth2.getAuthInstance();
-
-    // Listen for sign-in state changes.
-    auth2.isSignedIn.listen(updateSigninStatus);
-
-    // Handle initial sign-in state. (Determine if user is already signed in.)
-    var user = auth2.currentUser.get();
-    setSigninStatus();
-  });
-}
-
-document.getElementById("logout").addEventListener("click", function(e){
+document.getElementById("logout").addEventListener("click",  function(e){
   window.sessionStorage.removeItem('user');
   usuarioG.disconnect();
  sessionStorage.clear();
