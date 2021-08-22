@@ -30,22 +30,7 @@ document.addEventListener("DOMContentLoaded", function(e){
           
       });
       
-      function initClient() {
-          gapi.client.init({
-            'clientId': USERID,
-            'scope': 'profile'
-          }).then(function () {
-            auth2 = gapi.auth2.getAuthInstance();
-        
-            // Listen for sign-in state changes.
-            auth2.isSignedIn.listen(updateSigninStatus);
-        
-            // Handle initial sign-in state. (Determine if user is already signed in.)
-            var user = auth2.currentUser.get();
-            setSigninStatus();
-          });
-        }
-        
+     
       function setSigninStatus() {
           var user = auth2.currentUser.get();
           var isAuthorized = user.hasGrantedScopes('profile');
