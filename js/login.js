@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
             
         }});
-      document.getElementById("clickGoogle").addEventListener("click",async () => {
+      document.getElementById("clickGoogle").addEventListener("click", () => {
       
           
-            await  auth2.signIn();
+              auth2.signIn();
          
           
       });
