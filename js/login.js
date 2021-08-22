@@ -52,10 +52,11 @@ function setSigninStatus() {
     var user = auth2.currentUser.get();
     var isAuthorized = user.hasGrantedScopes('profile');
     if (isAuthorized) {
-        window.location.replace('index.html');
+        
         usuarioG = user;
         let profile = googleUser.getBasicProfile();
         window.sessionStorage.setItem('user', profile.getGivenName());
+        window.location.replace('index.html');
     }
   };
 
