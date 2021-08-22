@@ -47,9 +47,9 @@ var getJSONData = function(url){
 }
 document.getElementById("logout").addEventListener("click", async function(e){
   window.sessionStorage.removeItem('user');
-  let user = auth2.currentUser.get();
-  user.disconnect();
+  usuarioG.disconnect();
  sessionStorage.clear();
+ location.reload();
 
   
 

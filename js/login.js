@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         };
       
         function revokeAccess() {
-            auth2.disconnect();
+            usuarioG.disconnect();
         }
   
 });
