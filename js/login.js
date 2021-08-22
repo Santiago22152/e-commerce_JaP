@@ -63,7 +63,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         };
       
         function revokeAccess() {
-          auth2.disconnect();
+            if (auth2) {
+                auth2.disconnect();
+                window.sessionStorage.removeItem('name');
+            }
+            window.sessionStorage.removeItem('login');
+            await Toast.fire({
+                icon: 'info',
+                title: 'Sección cerrada..'
+            });
+            location.reload();
         }
   
 });
