@@ -54,7 +54,7 @@ function setSigninStatus() {
     if (isAuthorized) {
         
         usuarioG = user;
-        let profile = googleUser.getBasicProfile();
+        let profile = usuarioG.getBasicProfile();
         window.sessionStorage.setItem('user', profile.getGivenName());
         window.location.replace('index.html');
     }

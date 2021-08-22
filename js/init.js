@@ -43,7 +43,7 @@ var getJSONData = function(url){
   if((( window.location.pathname.substring((window.location.pathname.lastIndexOf('/'))+1) != 'login.html') &&
      (sessionStorage.getItem("user") == undefined)  ))
 {
-  if(sessionStorage.getItem() == undefined){
+  if(sessionStorage.getItem('user') == undefined){
     window.location.replace('login.html');}
 }
 
