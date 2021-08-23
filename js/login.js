@@ -23,11 +23,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             
         }});
       document.getElementById("clickGoogle").addEventListener("click", () => {
-      
-          
               auth2.signIn();
-         
-          
       });
       
       function initClient() {
@@ -37,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function(e){
           }).then(function () {
             auth2 = gapi.auth2.getAuthInstance();
         
-            // Listen for sign-in state changes.
+           
             auth2.isSignedIn.listen(updateSigninStatus);
         
-            // Handle initial sign-in state. (Determine if user is already signed in.)
+            
             var user = auth2.currentUser.get();
             setSigninStatus();
           });
@@ -63,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         function updateSigninStatus() {
           setSigninStatus();
         };
-      
+      //workinprogress
         function revokeAccess() {
             usuarioG.disconnect();
         }
