@@ -21,6 +21,7 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" id="profile"href="my-profile.html"> <i class="fas fa-user"></i> </a>
          
       </div>
     </nav>
@@ -34,23 +35,29 @@
               <div class="col text-right">
                   <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                       <label class="btn btn-light active" id="sortAsc" >
-                          <input type="radio" name="options" autocomplete="off" checked>A-Z
+                          <input type="radio" name="options" autocomplete="off"  checked > <i class="fas fa-sort-numeric-down"></i>
                       </label>
                       <label class="btn btn-light" id="sortDesc" >
-                          <input type="radio" name="options" autocomplete="off">Z-A
+                          <input type="radio" name="options" autocomplete="off"> <i class="fas fa-sort-numeric-up-alt"></i>
                       </label>
                       <label class="btn btn-light" id="sortByCount" >
-                          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+                          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relev.
                       </label>
                   </div>
               </div>
           </div>
           <div class="row justify-content-end">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="search" id="userInput" onkeyup="filterFunction()" class="form-control" placeholder="Search">
+              </div>
+              
+            </div>
               <div class="col-md-6 col-sm-12 mb-1 container">
                 <div class="row container p-0 m-0">
                   <div class="col">
-                    <p class="font-weight-normal text-right my-2">Cant.</p>
+                    <p class="font-weight-normal text-right my-2">Precio</p>
                   </div>
                   <div class="col">
                     <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
