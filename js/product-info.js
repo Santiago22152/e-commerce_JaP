@@ -5,7 +5,7 @@
 let productInfo;
 let commentsList=[];
 let commentCounter=0;
-
+//Obtengo datos de las API
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
     addComment();
 });
-
+//funcion que muestra productos
 function showProductsInfo(){
     //variable donde guardar el contenido de cada producto
         let htmlContentToAppend = "";
@@ -32,7 +32,7 @@ function showProductsInfo(){
         console.log(productInfo.images[0]);
     //Obtengo elemento donde insertar el html del producto, y lo inserto.
             document.getElementById("title").innerHTML += htmlContentToAppend;
-
+//loop para cargar las imagenes en el carousel
 for (let index = 0; index < productInfo.images.length; index++) {
   
 if (index == 0) {
@@ -66,14 +66,14 @@ else{
     
     
 }
-
+//hmtl a ingresar en la carta de descripcion del producto
 htmlContentToAppend=` <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:2rem;" > ${productInfo.currency + productInfo.cost}</h5>
 <span class="card-subtitle mb-2 text-muted">Vendidos: ${productInfo.soldCount} | Categoría: ${productInfo.category}</span>
 <p class="card-text"><b>Descripción</b>:<br> ${productInfo.description}</p>`
 document.getElementById("cardInfo").innerHTML += htmlContentToAppend;
             
 }
-    
+    //funcion para que el usuario agregue un comentario
 function addComment(){
 
     
@@ -98,6 +98,7 @@ function addComment(){
         comentario = {
             user : localStorage.getItem("user")
         }
+        //un escucha que detecta al presionar el boton de "opinar" y carga el comentario del usuario
 document.getElementById('send-comm').addEventListener('click', send =>{
     comentario.dateTime = formatDate(new Date);
    commentsList.unshift(comentario);
@@ -105,12 +106,13 @@ document.getElementById('send-comm').addEventListener('click', send =>{
    comentario.description= document.getElementById("comment-box").value;
     showComment();
     
-    
+    //reseteo los controles graficos de cargar un comentario
     for (let i = 0; i < 5; i++) {
         estrellas[i].classList.replace('fas', 'far');
     }
 
     document.getElementById("comment-box").value="";
+    //reseteo la variable de de comentario
 comentario={
 
     dateTime:"",
@@ -121,10 +123,7 @@ comentario={
 
         
 }
-function clearData(){
-    
-    
-}
+//funcion que muestra el primer comentario
 function showComment(){
     let htmlContentToAppend="";
         let comm = commentsList[0];
@@ -156,6 +155,7 @@ function showComment(){
     commentCounter++;
 
 }
+//funcion que ordena los comentarios por fecha y los muestra
 function orderAndShowComments(){
     result = commentsList.sort(function(a, b) {
         aDate= new Date(a.dateTime);
@@ -201,10 +201,11 @@ function orderAndShowComments(){
         
     }
 }
+//funcion que da formato a fecha 
 function formatDate(date) {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
-
+//funcion que dada un indice de comentario, y una puntuacion muestra las estrellas correspondientes.
 function showStars(commentIndex, commentScore){
     let commentID = "comment-" + commentIndex;
     let estrellas =document.getElementById(commentID).querySelectorAll('.fa-star'); 
