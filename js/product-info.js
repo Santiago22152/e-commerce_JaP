@@ -100,7 +100,6 @@ function addComment(){
 document.getElementById('send-comm').addEventListener('click', send =>{
     comentario.dateTime = formatDate(new Date);
    commentsList.unshift(comentario);
-   //console.log(commentsList);
    comentario.user=localStorage.getItem("user");
    comentario.description= document.getElementById("comment-box").value;
     showComment();
