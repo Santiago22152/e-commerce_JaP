@@ -16,24 +16,95 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" id="profile"href="my-profile.html"> <i class="fas fa-user"></i> </a>
-    </div>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div class="container-fluid nav-item">
+    <nav class="site-header sticky-top py-1 bg-dark">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" id="profile"href="my-profile.html"> <i class="fas fa-user"></i> </a>
+      </div>
+    </nav>
   </div>
+  <div class="flex-md-row"> 
+    
+    <div id="title" class="text-center" style="padding-bottom: 1rem;padding-top: 1rem;">     
+    </div>
+    <span style="padding-left:2rem ;" ><a href="products.html"> Volver al listado</a></span>
+ </div>
+  <div class="container " id="main">
+    
+    <div class="col-md-8">
+      <div id="carousel" class="container">
+       
+        <div class="container">
+          <div class="row">
+            
+            <div class="col-md-12 col-2 pb-14">
+              <div id="custCarousel" class="carousel slide" data-ride="carousel" style="padding-bottom: 5rem;">
+                <!-- slides -->
+      
+                <div id="carouselIMG" class="carousel-inner" style="padding-left:2rem ;">
+                 
+                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span
+                    class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel"
+                  data-slide="next"> <span class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
+                <ol id="thumb" class="carousel-indicators list-inline">
+                  
+                 
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="width: 30rem; height: 21rem;">
+        <div id="cardInfo" class="card-body">
+         
+           <!--  <a href="#" class="btn mr-2"><i class="fas fa-link"></i> Visit Site</a>
+          <a href="#" class="btn "><i class="fab fa-github"></i> Github</a>-->
+        </div>
+        </div>
+    </div>
+    
+  </div>
+  <div class="container">
+    <div class="row bootstrap snippets bootdeys">
+        <div class="col-md-8 col-sm-12">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Panel de Opiniones
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="comment-box" class="form-control" placeholder="Escriba su opinion" rows="3"></textarea>
+                        
+                        <div id="stars"> 
+                          <i class="far fa-star checked" data-value="1"></i>
+                          <i class="far fa-star checked" data-value="2"></i>
+                          <i class="far fa-star checked" data-value="3"></i>
+                          <i class="far fa-star checked" data-value="4"></i>
+                          <i class="far fa-star checked" data-value="5"></i>
+                        </div>
+                          <br>
+                        <button id="send-comm" type="button" class="btn btn-info pull-right">Opinar</button>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <ul id="comments" class="media-list">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

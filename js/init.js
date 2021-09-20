@@ -41,12 +41,13 @@ var getJSONData = function(url){
     });
 }
 //Checkeo que este logueado y si no redirijo a login para hacerlo 
-  if((( window.location.pathname.substring((window.location.pathname.lastIndexOf('/'))+1) != 'login.html') 
-  &&
-     (localStorage.getItem("user") == undefined)  ))
+if((( window.location.pathname.substring((window.location.pathname.lastIndexOf('/'))+1) != 'login.html') 
+&&
+   (localStorage.getItem("user") == undefined)  ))
 {
-    window.location.replace('login.html');
+  window.location.replace('login.html');
 }
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
