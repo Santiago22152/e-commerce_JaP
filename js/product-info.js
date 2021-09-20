@@ -95,14 +95,13 @@ function addComment(){
             comentario.score=puntuacion;
            
         });
-        comentario = {
-            user : localStorage.getItem("user")
-        }
+        
         //un escucha que detecta al presionar el boton de "opinar" y carga el comentario del usuario
 document.getElementById('send-comm').addEventListener('click', send =>{
     comentario.dateTime = formatDate(new Date);
    commentsList.unshift(comentario);
-   console.log(commentsList);
+   //console.log(commentsList);
+   comentario.user=localStorage.getItem("user");
    comentario.description= document.getElementById("comment-box").value;
     showComment();
     
@@ -114,7 +113,7 @@ document.getElementById('send-comm').addEventListener('click', send =>{
     document.getElementById("comment-box").value="";
     //reseteo la variable de de comentario
 comentario={
-
+    user:"",
     dateTime:"",
     description:"",
     score:""
