@@ -72,5 +72,7 @@ function showUser(){
 function revokeAccess() {
   if(auth2){
   auth2.disconnect();
+    localStorage.clear();
+    window.location.replace('login.html');
   };
 }
