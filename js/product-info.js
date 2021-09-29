@@ -4,7 +4,7 @@
 
 let productInfo;
 let commentsList=[];
-let commentCounter=0;
+
 //Obtengo datos de las API
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     addComment();
+ 
+   
 });
 //funcion que muestra productos
 function showProductsInfo(){
@@ -99,10 +101,13 @@ function addComment(){
         //un escucha que detecta al presionar el boton de "opinar" y carga el comentario del usuario
 document.getElementById('send-comm').addEventListener('click', send =>{
     comentario.dateTime = formatDate(new Date);
-   commentsList.unshift(comentario);
+   
    comentario.user=localStorage.getItem("user");
    comentario.description= document.getElementById("comment-box").value;
-    showComment();
+   commentsList.unshift(comentario);
+  orderAndShowComments();
+  console.log(commentsList);
+    
     
     //reseteo los controles graficos de cargar un comentario
     for (let i = 0; i < 5; i++) {
@@ -121,38 +126,7 @@ comentario={
 
         
 }
-//funcion que muestra el primer comentario
-function showComment(){
-    let htmlContentToAppend="";
-        let comm = commentsList[0];
-        htmlContentToAppend=`<li id="comment-${commentCounter}" class="media">
-                                
-        <div class="media-body">
-          
-            <span class="text-muted pull-right">
-                <small class="text-muted">${comm.dateTime} |</small>
-                <strong class="text-success">${comm.user}</strong>
-                <div>
-                  <i class="far fa-star checked"></i>
-                  <i class="far fa-star checked"></i>
-                  <i class="far fa-star checked"></i>
-                  <i class="far fa-star checked"></i>
-                  <i class="far fa-star checked"></i>
-                </div>
-                
-            </span>
-           
-            
-            <p>
-                ${comm.description}
-            </p>
-        </div>
-    </li>`;
-    document.getElementById("comments").innerHTML += htmlContentToAppend;
-    showStars(commentCounter,comm.score);
-    commentCounter++;
 
-}
 //funcion que ordena los comentarios por fecha y los muestra
 function orderAndShowComments(){
     result = commentsList.sort(function(a, b) {
@@ -167,7 +141,7 @@ function orderAndShowComments(){
     let htmlContentToAppend="";
     for (let index = 0; index < commentsList.length; index++) {
         const element = commentsList[index];
-        htmlContentToAppend=`<li id="comment-${index}" class="media">
+        htmlContentToAppend=`<li  class="media">
                                 
         <div class="media-body">
           
@@ -190,9 +164,15 @@ function orderAndShowComments(){
             </p>
         </div>
     </li>`;
-    document.getElementById("comments").innerHTML += htmlContentToAppend;
+    if(index == 0){
+        document.getElementById("comments").innerHTML = htmlContentToAppend;
     showStars(index,element.score);
-    commentCounter++;
+    
+    }else{
+        document.getElementById("comments").innerHTML += htmlContentToAppend;
+        showStars(index,element.score);
+    }
+    
     
         
 

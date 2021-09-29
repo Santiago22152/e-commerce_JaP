@@ -1,7 +1,4 @@
 //Variables y constantes requeridas para el API de Google signIn
-const USERID = "11833756231-vi15u0fik0la47jj7v26md047qlp70ql.apps.googleusercontent.com";
-let auth2;
-let usuarioG = {};
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -68,21 +65,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         function updateSigninStatus() {
           setSigninStatus();
         };
-      //workinprogress
-        function revokeAccess() {
-            usuarioG.disconnect();
-        }
-
-        //workinprogress
-        function signOut(){
-          var auth2 = gapi.auth2.getAuthInstance();
-          auth2.signOut().then(function () {
-            console.log('User signed out');
-          });
-          window.localStorage.clear();
-          location.reload();
-        }
-
+      
         
 });
 
