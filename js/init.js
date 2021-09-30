@@ -74,7 +74,7 @@ function revokeAccess() {
   auth2.disconnect();
     localStorage.clear();
     window.location.replace('login.html');
-  };
+  }else{
   localStorage.clear();
-    window.location.replace('login.html');
+    window.location.replace('login.html');}
 }
