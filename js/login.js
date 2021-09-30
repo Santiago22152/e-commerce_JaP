@@ -32,21 +32,7 @@ document.addEventListener("DOMContentLoaded", function(e){
               auth2.signIn();
       });
       //en esta funcion inicializo el clientId y el scope
-      function initClient() {
-          gapi.client.init({
-            'clientId': USERID,
-            'scope': 'profile'
-          }).then(function () {
-            auth2 = gapi.auth2.getAuthInstance();
-        
-           
-            auth2.isSignedIn.listen(updateSigninStatus);
-        
-            
-            var user = auth2.currentUser.get();
-            setSigninStatus();
-          });
-        }
+    
         //doy permiso al usuario que se logueo y obtengo su informacion de perfil
       function setSigninStatus() {
           var user = auth2.currentUser.get();

@@ -79,3 +79,19 @@ function revokeAccess() {
   localStorage.clear();
     window.location.replace('login.html');}
 }
+
+function initClient() {
+  gapi.client.init({
+    'clientId': USERID,
+    'scope': 'profile'
+  }).then(function () {
+    auth2 = gapi.auth2.getAuthInstance();
+
+   
+    auth2.isSignedIn.listen(updateSigninStatus);
+
+    
+    var user = auth2.currentUser.get();
+    setSigninStatus();
+  });
+}
