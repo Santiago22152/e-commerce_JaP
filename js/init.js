@@ -66,8 +66,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 //funcion para mostrar usuario almacenado en el localStorage 
 function showUser(){
-  let user = localStorage.getItem("user")
+  if(window.location.pathname != "/login.html" ){
+    let user = localStorage.getItem("user")
   document.getElementById("profile").innerHTML+= user;
+  }
+  
 }
 
 function revokeAccess() {
@@ -102,4 +105,4 @@ function updateSigninStatus() {
   if(!localStorage.getItem("user")){
     setSigninStatus();
   }
-};
+}
