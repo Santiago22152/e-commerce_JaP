@@ -75,4 +75,6 @@ function revokeAccess() {
     localStorage.clear();
     window.location.replace('login.html');
   };
+  localStorage.clear();
+    window.location.replace('login.html');
 }
