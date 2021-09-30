@@ -32,28 +32,27 @@ document.addEventListener("DOMContentLoaded", function(e){
               auth2.signIn();
       });
       //en esta funcion inicializo el clientId y el scope
-    
+     
         //doy permiso al usuario que se logueo y obtengo su informacion de perfil
-      function setSigninStatus() {
-          var user = auth2.currentUser.get();
-          var isAuthorized = user.hasGrantedScopes('profile');
-          if (isAuthorized) {
-              
-              usuarioG = user;
-              let profile = usuarioG.getBasicProfile();
-              window.localStorage.setItem('user', profile.getName());
-              window.localStorage.setItem('userID', profile.getId());
-              window.localStorage.setItem('email', profile.getEmail());
-              window.location.replace('index.html');
-          }
-        };
       
-        function updateSigninStatus() {
-          setSigninStatus();
-        };
       
         
+        
 });
+
+function setSigninStatus() {
+  var user = auth2.currentUser.get();
+  var isAuthorized = user.hasGrantedScopes('profile');
+  if (isAuthorized) {
+      
+      usuarioG = user;
+      let profile = usuarioG.getBasicProfile();
+      window.localStorage.setItem('user', profile.getName());
+      window.localStorage.setItem('userID', profile.getId());
+      window.localStorage.setItem('email', profile.getEmail());
+      window.location.replace('index.html');
+  }
+}
 
 
 

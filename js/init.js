@@ -95,3 +95,11 @@ function initClient() {
     setSigninStatus();
   });
 }
+
+function setSigninStatus() {}
+
+function updateSigninStatus() {
+  if(!localStorage.getItem("user")){
+    setSigninStatus();
+  }
+};
