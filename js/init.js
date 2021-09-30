@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 //funcion para mostrar usuario almacenado en el localStorage 
 function showUser(){
-  if(window.location.pathname != "/login.html" ){
+  if((window.location.pathname != "/login.html") || (window.location.pathname != "/e-commerce_JaP/login.html") ){
     let user = localStorage.getItem("user")
   document.getElementById("profile").innerHTML+= user;
   }
