@@ -61,6 +61,7 @@ if((( window.location.pathname.substring((window.location.pathname.lastIndexOf('
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  gapi.load('client:auth2', initClient);
   showUser();
 });
 //funcion para mostrar usuario almacenado en el localStorage 
