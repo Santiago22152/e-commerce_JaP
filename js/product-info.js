@@ -4,6 +4,8 @@
 
 let productInfo;
 let commentsList=[];
+let relatedProductsList =[];
+let productList = [];
 
 //Obtengo datos de las API
 document.addEventListener("DOMContentLoaded", function(e){
@@ -20,8 +22,45 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     addComment();
- 
-   
+    getRelatedProduct();
+    /*
+    new Splide( '.splide',{
+        type   : 'loop',
+        rewind: true,
+        trimSpace: false,
+        autoWidth: true,
+	perPage: 2,
+    perMove: 1,
+    gap: 10,
+
+    } ).mount();*/
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: false,
+        slidesPerView: 2,
+        effect: 'slide',
+        centeredSlides: false,
+        autoplay: {
+            delay: 500,
+          },
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      
+        // And if we need scrollbar
+       
+      });
+      
+
+    
 });
 //funcion que muestra productos
 function showProductsInfo(){
@@ -69,9 +108,43 @@ else{
     
 }
 //hmtl a ingresar en la carta de descripcion del producto
-htmlContentToAppend=` <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:2rem;" > ${productInfo.currency + productInfo.cost}</h5>
-<span class="card-subtitle mb-2 text-muted">Vendidos: ${productInfo.soldCount} | Categoría: ${productInfo.category}</span>
-<p class="card-text"><b>Descripción</b>:<br> ${productInfo.description}</p>`
+if(productInfo.description.length > 240){
+    htmlContentToAppend=` <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:2rem;" > ${productInfo.currency +" "+productInfo.cost}</h5>
+    <span class="card-subtitle mb-2 text-muted">Vendidos: ${productInfo.soldCount} | Categoría: ${productInfo.category}</span>
+    <p class="card-text"><b>Descripción</b>:<br> ${productInfo.description.slice(0,240)} ...</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Leer más</button>
+    
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><b>${productInfo.name}</b></h5>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        
+        <div class="modal-body">
+        <b>Descripción:</b> <br>
+
+          ${productInfo.description}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  `
+    
+}else{
+    htmlContentToAppend=` <h5 class="card-title" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:2rem;" > ${productInfo.currency + productInfo.cost}</h5>
+    <span class="card-subtitle mb-2 text-muted">Vendidos: ${productInfo.soldCount} | Categoría: ${productInfo.category}</span>
+    <p class="card-text"><b>Descripción</b>:<br> ${productInfo.description}</p>`
+}
 document.getElementById("cardInfo").innerHTML += htmlContentToAppend;
             
 }
@@ -133,17 +206,17 @@ function orderAndShowComments(){
         aDate= new Date(a.dateTime);
         bDate= new Date(b.dateTime);
         
-        if ( aDate > bDate ){ return -1; }
-        if ( aDate < bDate ){ return 1; }
+        if ( aDate > bDate ){ return 1; }
+        if ( aDate < bDate ){ return -1; }
         return 0;
     });
     commentsList = result;
     let htmlContentToAppend="";
-    for (let index = 0; index < commentsList.length; index++) {
+    for (let index = (commentsList.length - 1); index >= 0; index--) {
         const element = commentsList[index];
         htmlContentToAppend=`<li  class="media">
                                 
-        <div class="media-body">
+        <div class="media-body" id= "comment-${index}">
           
             <span class="text-muted pull-right">
                 <small class="text-muted">${element.dateTime} |</small>
@@ -164,7 +237,7 @@ function orderAndShowComments(){
             </p>
         </div>
     </li>`;
-    if(index == 0){
+    if(index == (commentsList.length-1)){
         document.getElementById("comments").innerHTML = htmlContentToAppend;
     showStars(index,element.score);
     
@@ -195,3 +268,122 @@ function showStars(commentIndex, commentScore){
                 estrellas[i].classList.replace('fas', 'far');
             }
 }
+
+function getRelatedProduct(){
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+          productList = resultObj.data;
+          
+          for (let index = 0; index < productInfo.relatedProducts.length; index++) {
+            let relatedProductIndex = productInfo.relatedProducts[index];
+            
+           relatedProductsList.push(productList[relatedProductIndex]);
+        }
+        showRelatedProducts();
+        }
+       
+       
+    });
+}
+function showRelatedProducts(){
+   
+    let htmlContentToAppend = ``;
+    for (let index = 0; index < relatedProductsList.length; index++) {
+        let relatedProduct = relatedProductsList[index];
+       
+       if (relatedProduct.description.length > 100) {
+        htmlContentToAppend=` 
+        <div class="swiper-slide">
+      <div class="card ">
+      <img class="card-img-top" src="${relatedProduct.imgSrc}">
+          <div class="card-body pt-0 px-0">
+          <div class= "text-center">
+              <h5 > <b>${relatedProduct.name}</b></h5> </div>
+          
+              <div class="d-flex flex-row justify-content-between mb-0 px-3"> 
+              
+              <b>Price: </b>
+              
+                  <h6>&dollar; ${relatedProduct.cost}</h6>
+              </div>
+              <hr class="mt-2 mx-3">
+              <div class="d-flex flex-row justify-content-between px-3 pb-4">
+                  <div class="d-flex flex-column"><span class="text-muted">Vendidos: ${relatedProduct.soldCount}</span></div>
+                  <div class="d-flex flex-column">
+                      <span class="mb-0 text-muted" >Categoría: Autos</span><small class="text-muted text-right"></small>
+                  </div>
+              </div>
+              <div class="d-flex flex-row justify-content-between p-3 mid">
+              ${relatedProduct.description.slice(0,100)} ...
+              </div> 
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#relatedModal"> Leer más</button> 
+          </div>
+      </div>
+      </div>
+      
+    
+    <div class="modal fade" id="relatedModal" tabindex="-1" role="dialog" aria-labelledby="relatedModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><b>${relatedProduct.name}</b></h5>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        
+        <div class="modal-body">
+        <b>Descripción:</b> <br>
+
+          ${relatedProduct.description}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+      
+    `;
+     
+       }else{
+        htmlContentToAppend=` 
+        <div class="swiper-slide">
+      <div class="card ">
+      <img class="card-img-top" src="${relatedProduct.imgSrc}">
+          <div class="card-body pt-0 px-0">
+          <div class= "text-center">
+              <h5 > <b>${relatedProduct.name}</b></h5> </div>
+          
+              <div class="d-flex flex-row justify-content-between mb-0 px-3"> 
+              
+              <b>Price: </b>
+              
+                  <h6>&dollar; ${relatedProduct.cost}</h6>
+              </div>
+              <hr class="mt-2 mx-3">
+              <div class="d-flex flex-row justify-content-between px-3 pb-4">
+                  <div class="d-flex flex-column"><span class="text-muted">Vendidos: ${relatedProduct.soldCount}</span></div>
+                  <div class="d-flex flex-column">
+                      <span class="mb-0 text-muted" >Categoría: Autos</span><small class="text-muted text-right"></small>
+                  </div>
+              </div>
+              <div class="d-flex flex-row justify-content-between p-3 mid">
+              ${relatedProduct.description}
+              </div> 
+              
+          </div>
+      </div>
+      </div>`
+       }
+          
+
+        
+       
+        document.getElementById("relatedProd").innerHTML+= htmlContentToAppend;
+    }
+}
+  

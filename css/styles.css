@@ -195,9 +195,7 @@ a.custom-card:hover {
   opacity: 0.75
 }
 
-.carousel-item img {
-  width: 80%
-}
+
 .nav-item{
   padding-left: 0!important;
   padding-right: 0!important;
@@ -258,3 +256,62 @@ a.custom-card:hover {
     border-bottom:1px dashed #efefef;
     margin-bottom:25px;
 }
+
+
+/*related products*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+.card {
+  flex-direction: column;
+  justify-content: center;
+  width: 275px;
+  
+  border-radius: 10px
+}
+
+.card-img-top {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+ width:fit-content;
+  max-height:200px !important;
+  padding-bottom: 10px;
+
+}
+
+
+
+
+
+
+
+.mid {
+  background: #ECEDF1
+}
+
+
+
+small.key {
+  text-decoration: underline;
+  font-size: 19px;
+  cursor: pointer
+}
+
+.btn-danger {
+  color: #FFCBD2
+}
+
+.btn-danger:focus {
+  box-shadow: none
+}
+
+small.justify-content-center {
+  font-size: 9px;
+  cursor: pointer;
+  text-decoration: underline
+}
+
+@media screen and (max-width:600px) {
+  .col-sm-4 {
+      margin-bottom: 50px
+  }
+}
+
