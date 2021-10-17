@@ -19,12 +19,12 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
-}
+} */
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -260,14 +260,14 @@ a.custom-card:hover {
 
 /*related products*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-.card {
+/*.card {
   flex-direction: column;
   justify-content: center;
   width: 275px;
   
   border-radius: 10px
 }
-
+*/
 .card-img-top {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;

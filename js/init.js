@@ -71,11 +71,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 function showUser(){
   if((window.location.pathname != "/login.html") == (window.location.pathname != "/e-commerce_JaP/login.html") ){
     let user = localStorage.getItem("user")
-    console.log(user);
+    
   document.getElementById("profile").innerHTML+= user;
   }
   
 }
+
+
 
 function revokeAccess() {
   if(auth2){

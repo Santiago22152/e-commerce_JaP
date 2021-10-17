@@ -77,7 +77,7 @@ function showProductsInfo(){
 for (let index = 0; index < productInfo.images.length; index++) {
   
 if (index == 0) {
-    htmlContentToAppend= ` <div class="carousel-item active"> <img
+    htmlContentToAppend= ` <div class="carousel-item active"> <img style= " max-width: 100% !important;"
             src="${productInfo.images[index]}"
             alt="imgProd${index}"> </div>`
             
@@ -92,14 +92,14 @@ if (index == 0) {
 }
 else{
 
-    htmlContentToAppend= ` <div class="carousel-item"> <img
+    htmlContentToAppend= ` <div class="carousel-item"> <img style= "max-width: 100% !important;"
     src="${productInfo.images[index]}"
     alt="imgProd${index}"> </div>`
     
     document.getElementById("carouselIMG").innerHTML += htmlContentToAppend;
 
     htmlContentToAppend=`<li class="list-inline-item"> <a id="carousel-selector-${index}" class="selected" data-slide-to="${index}"
-    data-target="#custCarousel"> <img
+    data-target="#custCarousel"> <img 
       src="${productInfo.images[index]}"
       class="img-fluid"> </a> </li>`
       document.getElementById("thumb").innerHTML += htmlContentToAppend;
