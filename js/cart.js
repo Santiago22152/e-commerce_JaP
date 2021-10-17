@@ -67,6 +67,7 @@ function clearProduct(id){
    cart_products.articles.splice((id-1),1);
     document.getElementById("products").innerHTML="";
     updateCart();
+    setSubTotal();
 }
 
 
