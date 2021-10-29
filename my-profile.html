@@ -57,14 +57,52 @@
      
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+ <div class="container">
+   <div class="row input-form" style="padding: 30px;">
+    <div class="col-md-7">
+      <form>
+        <div class="form-group">
+          <label >Nombres</label>
+          <input type="name" class="form-control" id="names"  placeholder="Nombres" required>
+      
+        </div>
+        <div class="form-group">
+          <label >Apellidos</label>
+          <input type="name" class="form-control" id="lastname"  placeholder="Apellidos" required>
+      
+        </div>
+        <div class="form-group">
+          <label >Edad</label>
+          <input type="number" class="form-control" id="age"  placeholder="Edad" required>
+      
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Celular</label>
+          <input type="number" class="form-control" id="cellNumber" placeholder="Celular" required>
+        </div>
+      
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" onchange="previewFile();" id="imginput" accept="image/*">
+          </div>
+       
+        <button type="" onclick="getinfo();" class="btn btn-primary">Guardar</button>
+      </form>
     </div>
-  </div>
+    <div class="col-md-5">
+      <img src="" class="image" id="imguser" alt="Foto de perfil" style="border-radius: 50px; max-width: 500px; margin: 40px; ">
+    </div>
+   </div>
+   
+     
+   
+ </div>
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
