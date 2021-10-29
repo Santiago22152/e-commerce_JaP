@@ -42,7 +42,7 @@ function previewFile(){
     if (file) {
         reader.readAsDataURL(file);
     }else{
-        preview.src = "img/tree1.png";
+        preview.src = "img/avatar.png";
     }
     reader.onloadend = function (){
         preview.src = reader.result;
