@@ -316,11 +316,15 @@ small.justify-content-center {
 }
 
 .input-form{
-
-  
  align-items: center;
  flex-direction: row;
-
-
-
 }
+
+
+
+.finish-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+

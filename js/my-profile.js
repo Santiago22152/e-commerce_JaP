@@ -2,8 +2,9 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
-
+//Obtengo la informacion de los inputs cargados por el usuario y los cargo en el objeto userPersonalInfo y los  paso al local storage
 function getinfo(){
+
     let userPersonalInfo = {};
     let preview = document.getElementById("imguser");
     
@@ -16,8 +17,11 @@ function getinfo(){
     localStorage.setItem("userData", JSON.stringify(userPersonalInfo));
 }
 
+//corroboro si hay algo cargado y si lo hay lo muestro en los inputs, asi genero la permanencia.
 function setInfo(){
-        userPersonalInfo = JSON.parse(localStorage.getItem("userData"));
+    userPersonalInfo = JSON.parse(localStorage.getItem("userData"));
+    if ( userPersonalInfo!=null ){
+        
         document.getElementById("names").value = userPersonalInfo.names;
         document.getElementById("lastname").value = userPersonalInfo.lastname;
         document.getElementById("age").value =userPersonalInfo.age;
@@ -25,6 +29,8 @@ function setInfo(){
         document.getElementById("cellNumber").value = userPersonalInfo.cellNumber;
         document.getElementById("imguser").src=userPersonalInfo.img;
     
+
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -32,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 setInfo();
 });
 
-
+//Obtengo la imagen cargada por el usuario.
 function previewFile(){
     let preview = document.getElementById("imguser");
     let file = document.getElementById("imginput").files[0];

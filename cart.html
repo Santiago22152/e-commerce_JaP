@@ -21,7 +21,7 @@
   <link href="css/dropzone.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
   <link href="css/styles.css" rel="stylesheet">
-
+  <script src="https://kit.fontawesome.com/6caa34c89f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -95,20 +95,20 @@
                                                               <tr>
                                                                 <div style="padding-bottom: 10px ;" class="custom-control custom-radio">
                                                                   <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
-                                                                  <label class="custom-control-label" for="goldradio">Gold</label>
+                                                                  <label class="custom-control-label" for="goldradio">Gold (15%)</label>
                                                                 </div>
                                                               </tr>
 
                                                               <tr>
                                                                 <div style="padding-bottom: 10px ;" class="custom-control custom-radio">
                                                                   <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                                                                  <label class="custom-control-label" for="premiumradio">Premium</label>
+                                                                  <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
                                                                 </div>
                                                               </tr>
                                                               <tr>
                                                                 <div class="custom-control custom-radio">
                                                                   <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                                                                  <label class="custom-control-label" for="standardradio">Estándar</label>
+                                                                  <label class="custom-control-label" for="standardradio">Estándar (5%)</label>
                                                                 </div>
                                                               </tr>
                                                               
@@ -145,7 +145,7 @@
                                         <div class="row-md-8 mb-4">
                                           <div class="card mb-4">
                                             <div class="card-header py-3">
-                                              <h5 class="mb-0 text-font text-uppercase">Dirección de envío</h5>
+                                              <h5 class="mb-0 text-font text-uppercase">Datos de envío</h5>
                                             </div>
                                             <div class="card-body">
                                               <form>
@@ -153,14 +153,14 @@
                                                 <div class="row mb-4">
                                                   <div class="col">
                                                     <div class="form-outline">
-                                                      <input type="text" id="form11Example1" class="form-control" />
-                                                      <label class="form-label" for="form11Example1">Nombre</label>
+                                                      <input type="text" id="name" class="form-control"required >
+                                                      <label class="form-label" for="name">Nombre</label>
                                                     </div>
                                                   </div>
                                                   <div class="col">
                                                     <div class="form-outline">
-                                                      <input type="text" id="form11Example2" class="form-control" />
-                                                      <label class="form-label" for="form11Example2">Apellido</label>
+                                                      <input type="text" id="last_name" class="form-control" required>
+                                                      <label class="form-label" for="last_name">Apellido</label>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -170,57 +170,142 @@
                                   
                                                 <!-- Text input -->
                                                 <div class="form-outline mb-4">
-                                                  <input type="text" id="form11Example4" class="form-control" />
-                                                  <label class="form-label" for="form11Example4">Dirección</label>
+                                                  <input type="text" id="address" class="form-control" required>
+                                                  <label class="form-label" for="address">Dirección</label>
                                                 </div>
                                   
                                                 <!-- Email input -->
                                                 <div class="form-outline mb-4">
-                                                  <input type="email" id="form11Example5" class="form-control" />
-                                                  <label class="form-label" for="form11Example5">Email</label>
+                                                  <input type="email" id="email" class="form-control" required>
+                                                  <label class="form-label" for="email">Email</label>
                                                 </div>
                                   
                                                 <!-- Number input -->
                                                 <div class="form-outline mb-4">
-                                                  <input type="number" id="form11Example6" class="form-control" />
-                                                  <label class="form-label" for="form11Example6">Número de contacto</label>
+                                                  <input type="number" id="contact_number" class="form-control"required >
+                                                  <label class="form-label" for="contact_number">Número de contacto</label>
                                                 </div>
                                   
                                                 <!-- Message input -->
                                                 <div class="form-outline mb-4">
-                                                  <textarea class="form-control" id="form11Example7" rows="4"></textarea>
-                                                  <label class="form-label" for="form11Example7">Información adicional</label>
+                                                  <textarea class="form-control" id="additional_info" rows="4"></textarea>
+                                                  <label class="form-label" for="additional_info">Información adicional</label>
                                                 </div>
-                                        <div class="cart-footer text-right">
+                                                
+                                              </form>
+                                        <div class="cart-footer" style="display:flex; justify-content: space-between;">
+                                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Seleccione un método de pago</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                                                  <div class="tabs mt-3">
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                      <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
+                                                          onclick="validateVisaInputs()" data-toggle="tab" href="#visa" role="tab" aria-controls="visa"
+                                                          aria-selected="true"> <i class="far fa-credit-card"></i></i> </a> </li>
+                                                      <li class="nav-item" role="presentation"> <a class="nav-link" id="bank-tab" data-toggle="tab"
+                                                          onclick="validateBankInputs()" href="#bank" role="tab" aria-controls="bank" aria-selected="false"> <i
+                                                            class="fas fa-university"></i> </a> </li>
+                                                    </ul>
+                                                    <div class="tab-content" id="myTabContent">
+                                                      <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                                                        <div class="mt-4 mx-4">
+                                                          <div class="text-center">
+                                                            <h5>Tarjeta de Crédito/Débito</h5>
+                                                          </div>
+                                        
+                                        
+                                        
+                                                          <div class="form mt-3">
+                                                            <div class="inputbox"> <input type="text" name="name" class="form-control" id="card-name" required>
+                                                              <span>Nombre completo del titular</span> </div>
+                                                            <div class="inputbox"> <input type="number" name="name" min="1" id="card-number"
+                                                                class="form-control" required> <span>Número de la tarjeta</span> </div>
+                                                            <div class="d-flex flex-row">
+                                                              <div class="inputbox"> <input type="date" name="name" min="1" id="due-date" class="form-control"
+                                                                  required> <span>Vencimiento</span> </div>
+                                                              <div class="inputbox"> <input type="password" name="name" id="sec-code" min="1" max="999"
+                                                                  class="form-control" required> <span>CVV</span> </div>
+                                        
+                                                            </div>
+                                        
+                                                          </div>
+                                        
+                                                          </form>
+                                                        </div>
+                                                      </div>
+                                                      <div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="bank-tab">
+                                                        <div class="px-5 mt-5">
+                                                          <div class="inputbox"> <input type="number" name="name" class="form-control" id="account-number"
+                                                              disabled required> <span>Número de Cuenta</span> </div>
+                                        
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-footer">      
+                                                  <button type="button" onclick="putPayMethodAndSave();" data-target="#bank" id="savePayMthd" data-dismiss="" class="btn btn-primary">Guardar</button>
+                                                
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="container">
+                                            <div class="row-md-12" style="display: flex; justify-content: space-evenly;">
+                                              <div class="col-md-6" style="padding: 0px;">
+                                                <button type="button"  class="btn btn-success my-1" data-toggle="modal" data-target="#exampleModal">Métodos de pago<i
+                                                    class="ri-arrow-right-line ml-2"></i> </button>
+                                              </div>
+                                              <div class="col-md-6" style="padding: 0px; align-self: center;">
+                                                <label id="payMethod" style="display: flex; justify-content: center;">Seleccione un método de pago</label>
+                                                </div>
+                                            </div>
                                             
-                                            <a href="#" class="btn btn-success my-1">Proceed to Checkout<i class="ri-arrow-right-line ml-2"></i></a>
+                                          <div class="row-md-12" style="display: flex;">
+                                            <button href="#" type="submit" onclick="validatePurchase();" style="min-width: 100%;" class="btn btn-success my-1">Finalizar Compra<i class="ri-arrow-right-line ml-2"></i>
+                                            </button>
+                                          </div>
+                                          </div>
+                                            
+                                          
+                                        
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End col -->
-            </div>
-            <!-- End row -->
-        </div>
-        </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-  
-   
-</body>
-
-</html>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <!-- End col -->
+                                        </div>
+                                        <!-- End row -->
+                                        </div>
+                                        </div>
+                                        <div id="spinner-wrapper">
+                                          <div class="lds-ring">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                          </div>
+                                        </div>
+                                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                        <script src="js/jquery-3.4.1.min.js"></script>
+                                        <script src="js/bootstrap.bundle.min.js"></script>
+                                        <script src="js/dropzone.js"></script>
+                                        <script src="js/init.js"></script>
+                                        <script src="js/cart.js"></script>
+                                        
+                                        
+                                        </body>
+                                        
+                                        </html>
